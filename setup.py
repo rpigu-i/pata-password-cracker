@@ -11,6 +11,11 @@ setup(
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),
+    entry_points={
+        'console_script': [
+            'pata_password_cracker = pata_password_cracker.__main__:main'
+        ]
+    }, 
     install_requires = [
         'patalib==0.0.2',
 
