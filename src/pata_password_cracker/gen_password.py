@@ -4,15 +4,15 @@ from subsitutor import MungSubstitutor
 class PasswordGenerator:
 
     bio_data = {}
+    key = ""
     password_mappings = {}
 
-    def __init__(self, bio_data):
+    def __init__(self, key, bio_data):
         """
         Store list of biographical data
         """
         self.bio_data = bio_data
-        self.process_individual()
-    
+        self.key = key
 
     def process_individual(self):
         """
@@ -23,15 +23,17 @@ class PasswordGenerator:
         individual = {}
         count = 0
         for k, v in self.bio_data.iteritems():
-            indv_key = str(count) +":" + k
-            indv_key = indv_key.replace(" ", "")
-            individual[indv_key] = k
-            count = count + 1
-            for bio in v.iteritems():
-                individual[bio[0]] = self.gen_pata_data(str(bio[1]))
+            individual[self.key] = k
+            if type(v) is not list:
+                individual[k] = self.gen_pata_data(str(v))
+            else:
+                list_vals_to_process = []
+                for listval in v:
+                    list_vals_to_process.append(self.gen_pata_data(str(listval)))
+                individual[k] = list_vals_to_process
 
-        print individual 
-        print "--------------"
+        return individual 
+
 
     def gen_pata_data(self, bio_val):
         """
