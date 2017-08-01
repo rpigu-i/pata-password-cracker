@@ -2,6 +2,7 @@ import argparse
 from input import ProcessInputYaml
 from gen_logo import Logo
 from categories import Categories
+from output import ProcessOutputYaml
 
 def main():
     """
@@ -36,7 +37,9 @@ def generate_password_list(individual):
     """
     Kick off the password list generation
     """
-    individuals_passwords = Categories(individual)
+    individuals_passwords = Categories(individual).process_categories()
+    dict_to_yaml = ProcessOutputYaml()
+    dict_to_yaml.output_processor(individuals_passwords)
         
             
 

@@ -1,23 +1,36 @@
-from gen_password import PasswordGenerator 
-from family_generator import FamilyPasswordGenerator
+import pkg_resources
 
 class Categories:
     """
     Load categories from YAML
     representation.
     """  
-
     bio_data = {}
     password_mappings = {}
     individuals = {}
+    category_plugin = "pata_password_cracker.plugins"
+    encryption_plugin = "pata_password_cracker.encryption"
+    loaded_cat_plugin_dict = {} 
+    loaded_encryption_plugin_dict = {}
 
     def __init__(self, bio_data):
         """
         Store list of biographical data
         """
         self.bio_data = bio_data
-        self.process_categories()
+        self.loaded_cat_plugin_dict = self.load_plugins(self.category_plugin)
+        self.loaded_encryption_plugin_dict = self.load_plugins(self.encryption_plugin)
+
     
+    def load_plugins(self, plugin):
+        """
+        Load the plugin and store object in array
+        """  
+        plugin_dict = {}
+        for p in pkg_resources.iter_entry_points(plugin):
+            plugin_dict[p.name] = p.load()
+        return plugin_dict 
+
 
     def process_categories(self):
         """
@@ -33,65 +46,12 @@ class Categories:
             individual[indv_key] = target
             target_vals = []
             count = count + 1   
-            
- 
+             
             for category in self.bio_data[target]:
                for k, v in category.iteritems():
-                   if k == 'core_bio' and v != None:
-                       target_vals.append({k:self.process_core_bio(k,v)})
-                   if k == 'family' and v != None:
-                       target_vals.append({k:self.process_family(k,v)})
-                   if k == 'fans' and v != None:
-                       self.process_fans()
-                   if k == 'fantasists' and v != None:
-                       self.process_fans(v)
-                   if k == 'crytpic' and v != None:
-                       self.process_crytpic(v)
-                   if k == 'free_data' and v != None:
-                       self.process_free_data(v)
-                   
+                   for p in self.loaded_cat_plugin_dict:
+                       if k == p:
+                           target_vals.append({k:self.loaded_cat_plugin_dict[p].process_data(k,v,self.loaded_encryption_plugin_dict)})
             individual[indv_key] = target_vals
                    
-        print individual 
         return individual
-
-
-    def process_core_bio(self,k,core_bio_data):
-        """
-        Process the core bio data
-        """
-        bio_passwords = PasswordGenerator(k, core_bio_data).process_individual()
-        return bio_passwords
-
-
-    def process_family(self,k, family_bio_data):
-        """
-        Process the family bio data
-        """
-        family_passwords = FamilyPasswordGenerator(k, family_bio_data).process_individual()
-        return family_passwords
-
-    def process_fans(self, fans_bio_data):
-        """
-        Process the fans bio data
-        """
-        print "here"
- 
-    def process_fantasists(self, fantasists_bio_data):
-        """
-        Process the fantasists bio data
-        """
-        print "here"
-
-
-    def process_cryptic(self, cryptic_bio_data):
-        """
-        Process the cryptic bio data
-        """
-        print "here"
-     
-    def process_free_data(self, free_data):
-        """
-        Process the context free bio data
-        """
-        print "here"

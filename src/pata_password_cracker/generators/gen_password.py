@@ -7,12 +7,13 @@ class PasswordGenerator:
     key = ""
     password_mappings = {}
 
-    def __init__(self, key, bio_data):
+    def __init__(self, key, bio_data, encryption_dict):
         """
         Store list of biographical data
         """
         self.bio_data = bio_data
         self.key = key
+        self.encryption_dict = encryption_dict
 
     def process_individual(self):
         """
@@ -55,10 +56,22 @@ class PasswordGenerator:
         synonyms = Synonym().generate_synonym(bio_val)
         synonyms = list(set(synonyms['results']))
         new_synonyms = []
+        clear_text = []
+        encrypted = {}
+        temp_enc_list = []
+
         for i in synonyms:
             new_synonyms = new_synonyms + self.subsitutor(i)
 
-        return {'synonym':list(set(new_synonyms+synonyms))}
+        clear_text = list(set(new_synonyms+synonyms))
+
+        for e in self.encryption_dict:
+            for p in clear_text:
+                temp_enc_list.append(self.encryption_dict[e].hash(p))
+            encrypted[e] = temp_enc_list
+            temp_enc_list = []
+
+        return {'synonym':{'clear_text':clear_text,'encrypted':encrypted}}
 
 
     def antonym(self, bio_val):
@@ -68,10 +81,22 @@ class PasswordGenerator:
         antonyms = Antonym().generate_antonym(bio_val)
         antonyms = list(set(antonyms['results']))
         new_antonyms = []
+        clear_text = []
+        encrypted = {}
+        temp_enc_list = []
+
         for i in antonyms:
             new_antonyms = new_antonyms + self.subsitutor(i)
 
-        return {'antonyms':list(set(new_antonyms+antonyms))}
+        clear_text = list(set(new_antonyms+antonyms))
+
+        for e in self.encryption_dict:
+            for p in clear_text:
+                temp_enc_list.append(self.encryption_dict[e].hash(p))
+            encrypted[e] = temp_enc_list
+            temp_enc_list = []
+
+        return {'antonyms':{'clear_text':clear_text,'encrypted':encrypted}}
 
 
     def syzygy(self, bio_val):
@@ -81,10 +106,22 @@ class PasswordGenerator:
         syzygys = Syzygy().generate_syzygy(bio_val)
         syzygys = list(set(syzygys['results']))
         new_syzygys = []
+        clear_text = []
+        encrypted = {}
+        temp_enc_list = []
+
         for i in syzygys:
             new_syzygys = new_syzygys + self.subsitutor(i)
 
-        return {'syzygys':list(set(new_syzygys+syzygys))}
+        clear_text = list(set(new_syzygys+syzygys))
+
+        for e in self.encryption_dict:
+            for p in clear_text:
+                temp_enc_list.append(self.encryption_dict[e].hash(p))
+            encrypted[e] = temp_enc_list
+            temp_enc_list = []
+
+        return {'syzygys':{'clear_text':clear_text,'encrypted':encrypted}}
 
 
     def subsitutor(self, pwd):
