@@ -18,9 +18,15 @@ pet_name: biggles
 hobby: football
 
 The tool is agnostic so any key value pair you consider
-worthy of attempting is valid.
+worthy of attempting is valid. This is defined under the 
+free data category.
 
-In addition to this will be 4 fixed categories these being:
+A fixed category is the core_data. This is where a user core biographic
+data is stored, for example name, age, gender and so on.
+Specific processing is applied to this based upon known password
+patterns.
+
+In addition to this will be 4 more fixed categories these being:
 
 1. Family-oriented
 
@@ -39,8 +45,16 @@ that Dr Helen Petrie defined in her work back in
 the early naughties.
 
 
+## Family-oriented
+
+Here we record data about family relationships.
+
+
 
 ## Command line 
+
+The tool can be run as follows:
+
 
 ```
 python -m pata_password_cracker test_data.yaml
@@ -87,6 +101,11 @@ individuals:
         lodge: Hermes
 ```
 
+
+## Encryption
+
+Currently md5, SHA1, SHA224, SHA256, SHA384, and SHA512 are supported.
+New encryption plguins can be added as needed.
 
 
 This is still in early stages of development......
