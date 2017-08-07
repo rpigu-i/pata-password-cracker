@@ -24,11 +24,17 @@ setup(
              'free_data = pata_password_cracker.generators.free_data'
         ],
         'pata_password_cracker.encryption': [
-             'md5 = pata_password_cracker.encryption.md5'
+             'md5 = pata_password_cracker.encryption.md5',
+             'sha1 = pata_password_cracker.encryption.sha1',
+             'sha224 = pata_password_cracker.encryption.sha224',
+             'sha256 = pata_password_cracker.encryption.sha256',
+             'sha384 = pata_password_cracker.encryption.sha384',
+             'sha512 = pata_password_cracker.encryption.sha512',
+             'bcrypt = pata_password_cracker.encryption.bcrypt'
         ] 
     }, 
     install_requires = [
         'patalib==0.0.2',
-
+        'bcrypt'
     ]
 )
