@@ -55,7 +55,7 @@ class Categories:
                    for p in self.loaded_cat_plugin_dict:
                        if k == p:
                            target_vals.append(
-                               {k:self.loaded_cat_plugin_dict[p].process_data(
+                               {k:self.loaded_cat_plugin_dict[p]().process_data(
                                     k,v,
                                     self.loaded_encryption_plugin_dict,
                                     self.loaded_substitutors_plugin_dict)})

@@ -16,21 +16,21 @@ setup(
             'pata_password_cracker = pata_password_cracker.__main__:main'
         ],
         'pata_password_cracker.plugins': [
-             'core_bio = pata_password_cracker.generators.core_bio',
-             'family = pata_password_cracker.generators.family',
-             'fans = pata_password_cracker.generators.fans',
-             'fantasists = pata_password_cracker.generators.fantasists',
-             'cryptic = pata_password_cracker.generators.cryptic',
-             'free_data = pata_password_cracker.generators.free_data'
+             'core_bio = pata_password_cracker.generators.core_bio:CoreBioGenerator',
+             'family = pata_password_cracker.generators.family:FamilyGenerator',
+             'fans = pata_password_cracker.generators.fans:FansGenerator',
+             'fantasists = pata_password_cracker.generators.fantasists:FantasistsGenerator',
+             'cryptic = pata_password_cracker.generators.cryptic:CrypticGenerator',
+             'free_data = pata_password_cracker.generators.free_data:FreeDataGenerator'
         ],
         'pata_password_cracker.encryption': [
-             'md5 = pata_password_cracker.encryption.md5',
-             'sha1 = pata_password_cracker.encryption.sha1',
-             'sha224 = pata_password_cracker.encryption.sha224',
-             'sha256 = pata_password_cracker.encryption.sha256',
-             'sha384 = pata_password_cracker.encryption.sha384',
-             'sha512 = pata_password_cracker.encryption.sha512',
-             'bcrypt = pata_password_cracker.encryption.bcrypt'
+             'md5 = pata_password_cracker.encryption.md5:MD5Encryption',
+             'sha1 = pata_password_cracker.encryption.sha1:SHA1Encryption',
+             'sha224 = pata_password_cracker.encryption.sha224:SHA224Encryption',
+             'sha256 = pata_password_cracker.encryption.sha256:SHA256Encryption',
+             'sha384 = pata_password_cracker.encryption.sha384:SHA384Encryption',
+             'sha512 = pata_password_cracker.encryption.sha512:SHA512Encryption',
+             'bcrypt = pata_password_cracker.encryption.bcrypt:BcryptEncryption'
         ],
         'pata_password_cracker.substitutors': [
              'simple = pata_password_cracker.substitutors.simple:MungSubstitutor', 

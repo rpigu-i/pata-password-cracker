@@ -61,7 +61,7 @@ class PasswordGenerator:
 
         for e in self.encryption_dict:
             for p in clear_text:
-                temp_enc_list.append(self.encryption_dict[e].hash(p))
+                temp_enc_list.append(self.encryption_dict[e]().hash(p))
             encrypted[e] = temp_enc_list
             temp_enc_list = []
 

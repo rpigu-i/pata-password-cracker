@@ -1,7 +1,11 @@
+from ..gen_password import PasswordGenerator 
 
-def process_data(k,free_bio_data,encryption_dict,substitutors_dict):
-    """
-    Process the free bio data
-    """
-    print "Not yet implemented"
+class FreeDataGenerator():
 
+    def process_data(self,k,free_bio_data,encryption_dict,substitutors_dict):
+        """
+        Process the free bio data
+        """
+        free_bio_passwords = PasswordGenerator(k, free_bio_data, encryption_dict, substitutors_dict).process_individual()
+        return free_bio_passwords
+    

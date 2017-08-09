@@ -1,7 +1,11 @@
 
-def process_data(k,fan_bio_data,encryption_dict,substitutors_dict):
+class FansGenerator():
     """
-    Process the fan data
-    """
-    print "Not yet implemented"
-
+    Generate Fan based passwords
+    """ 
+    def process_data(self, k,fan_bio_data,encryption_dict,substitutors_dict):
+        """
+        Process the fan data
+        """
+        print "Not yet implemented"
+    
