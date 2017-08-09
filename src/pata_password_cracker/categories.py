@@ -10,8 +10,10 @@ class Categories:
     individuals = {}
     category_plugin = "pata_password_cracker.plugins"
     encryption_plugin = "pata_password_cracker.encryption"
+    substitutors_plugin = "pata_password_cracker.substitutors"
     loaded_cat_plugin_dict = {} 
     loaded_encryption_plugin_dict = {}
+    loaded_substitutors_plugin_dict = {}
 
     def __init__(self, bio_data):
         """
@@ -20,6 +22,7 @@ class Categories:
         self.bio_data = bio_data
         self.loaded_cat_plugin_dict = self.load_plugins(self.category_plugin)
         self.loaded_encryption_plugin_dict = self.load_plugins(self.encryption_plugin)
+        self.loaded_substitutors_plugin_dict = self.load_plugins(self.substitutors_plugin)
 
     
     def load_plugins(self, plugin):
@@ -51,7 +54,11 @@ class Categories:
                for k, v in category.iteritems():
                    for p in self.loaded_cat_plugin_dict:
                        if k == p:
-                           target_vals.append({k:self.loaded_cat_plugin_dict[p].process_data(k,v,self.loaded_encryption_plugin_dict)})
+                           target_vals.append(
+                               {k:self.loaded_cat_plugin_dict[p].process_data(
+                                    k,v,
+                                    self.loaded_encryption_plugin_dict,
+                                    self.loaded_substitutors_plugin_dict)})
             individual[indv_key] = target_vals
                    
         return individual

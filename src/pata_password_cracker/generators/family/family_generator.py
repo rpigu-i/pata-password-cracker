@@ -6,8 +6,9 @@ class FamilyPasswordGenerator():
     family_data = {}
     cat = ""
     encryption_dict = {}
+    substitutors_dict = {}
 
-    def __init__(self, k, family_data, encryption_dict):
+    def __init__(self, k, family_data, encryption_dict, substitutors_dict):
         """
         Grab family orientated
         data and process
@@ -16,6 +17,7 @@ class FamilyPasswordGenerator():
         self.family_data = family_data
         self.cat = k
         self.encryption_dict = encryption_dict
+        self.substitutors_dict = substitutors_dict
 
 
     def process_individual(self):
@@ -31,7 +33,7 @@ class FamilyPasswordGenerator():
         for ind in self.family_data:
             for bio, values in ind.iteritems():
                 pata_passwords.append(self.name_dob(bio, values))
-                pata_passwords.append(PasswordGenerator(self.cat, values, self.encryption_dict).process_individual())
+                pata_passwords.append(PasswordGenerator(self.cat, values, self.encryption_dict, self.substitutors_dict).process_individual())
                 individual[bio] = pata_passwords
                 
             pata_passwords = []
@@ -55,7 +57,7 @@ class FamilyPasswordGenerator():
             name_dob_combo['last_name_dob']  = \
                 self.date_and_name_processor(values['last_name'], values['dob'])
 
-        name_dob_combo = PasswordGenerator(self.cat, name_dob_combo, self.encryption_dict).process_individual()
+        name_dob_combo = PasswordGenerator(self.cat, name_dob_combo, self.encryption_dict, self.substitutors_dict).process_individual()
      
         return name_dob_combo
 

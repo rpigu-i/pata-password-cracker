@@ -1,5 +1,5 @@
 
-def process_data(k,fantasists_bio_data,encryption_dict):
+def process_data(k,fantasists_bio_data,encryption_dict,substitutors_dict):
     """
     Process the fantasists data
     """

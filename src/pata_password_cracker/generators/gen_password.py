@@ -1,19 +1,21 @@
 from patalib import Antonym, Synonym, Syzygy, Anomaly, Clinamen
-from subsitutor import MungSubstitutor
 
 class PasswordGenerator:
 
     bio_data = {}
     key = ""
     password_mappings = {}
+    encryption_dict = {}
+    substitutors_dict = {}
 
-    def __init__(self, key, bio_data, encryption_dict):
+    def __init__(self, key, bio_data, encryption_dict, substitutors_dict):
         """
         Store list of biographical data
         """
         self.bio_data = bio_data
         self.key = key
         self.encryption_dict = encryption_dict
+        self.substitutors_dict = substitutors_dict
 
     def process_individual(self):
         """
@@ -129,9 +131,14 @@ class PasswordGenerator:
         substitutions 
         """
         new_pwds = []
-        mung_it = MungSubstitutor()
-        new_pwds.append(mung_it.total_mung_simple(pwd))
-        new_pwds.append(mung_it.random_mung_simple(pwd))
+
+        for s in self.substitutors_dict:
+            generator_class = self.substitutors_dict[s]()
+            new_pwds.append(generator_class.substitute(pwd))
+
+        #mung_it = MungSubstitutor()
+        #new_pwds.append(mung_it.total_mung_simple(pwd))
+        #new_pwds.append(mung_it.random_mung_simple(pwd))
          
         return new_pwds
 

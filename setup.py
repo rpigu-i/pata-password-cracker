@@ -31,7 +31,11 @@ setup(
              'sha384 = pata_password_cracker.encryption.sha384',
              'sha512 = pata_password_cracker.encryption.sha512',
              'bcrypt = pata_password_cracker.encryption.bcrypt'
-        ] 
+        ],
+        'pata_password_cracker.substitutors': [
+             'simple = pata_password_cracker.substitutors.simple:MungSubstitutor', 
+             'simplerandom = pata_password_cracker.substitutors.simplerandom:MungSubstitutorRandom' 
+        ]
     }, 
     install_requires = [
         'patalib==0.0.2',
