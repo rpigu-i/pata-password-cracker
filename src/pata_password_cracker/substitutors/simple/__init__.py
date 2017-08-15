@@ -40,12 +40,6 @@ class MungSubstitutor():
 
     def substitute(self, pwd):
         return self.munger(pwd, self.substitution_table_simple.iteritems()) 
-   
-
-    #def random_mung_simple(self, pwd):
-    #    random_simple_table = random.sample(self.substitution_table_simple.items(),3)
-    #    return self.munger(pwd, random_simple_table)       
-
 
     def munger(self, pwd, table):
         """

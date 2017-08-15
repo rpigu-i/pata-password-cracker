@@ -13,42 +13,29 @@ of the target.
 
 For example:
 
+```
 pet_name: biggles
 
 hobby: football
+```
 
 The tool is agnostic so any key value pair you consider
 worthy of attempting is valid. This is defined under the 
 free data category.
 
-A fixed category is the core_data. This is where a user core biographic
-data is stored, for example name, age, gender and so on.
+Two fixed categories exist these being the core_data and family data. 
+This is where a user core biographic data is stored, for example name, age, 
+gender and so on. The family section contains family relationship data.
 Specific processing is applied to this based upon known password
 patterns.
 
-In addition to this will be 4 more fixed categories these being:
+This work has been inspired by Dr Helen Petrie and the ideas she defined in 
+her work back in the early naughties.
 
-1. Family-oriented
-
-2. Fans
-
-3. Fantasists
-
-4. Cryptic
-
-
-Values provided in these categories can have
-additional processing applied to them. 
-
-The names were derived from the categories 
-that Dr Helen Petrie defined in her work back in
-the early naughties.
-
-
-## Family-oriented
-
-Here we record data about family relationships.
-
+Originally the plan was to use the four catgeories she defined as distinct 
+subsections in the input YAML doc. However it was quickly discovered that
+using the free_data category was jsut as effective for fans and fantasist 
+based results. 
 
 
 ## Command line 
@@ -73,7 +60,6 @@ individuals:
         city: New York
         zip: 0123
         birthdate: 05/06/82
-
     - family:
         - individual_1: 
             relationship: father
@@ -85,13 +71,6 @@ individuals:
             first_name: Susie
             last_name: Smith
             dob: 1944-03-03
-
-    - fans:
-
-    - fantasists:
-
-    - cryptic: 
-        
     - free_data:
         pet1: cat
         pet1_name: ginger
@@ -106,6 +85,12 @@ individuals:
 
 Currently md5, SHA1, SHA224, SHA256, SHA384, and SHA512 are supported.
 New encryption plguins can be added as needed.
+
+
+## PataData
+
+This is where the magic happens. Using pataphysical algorithms we can generate
+all sorts of interesting password combinations based upon key value pairs.
 
 
 This is still in early stages of development......

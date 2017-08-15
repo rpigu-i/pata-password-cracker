@@ -1,4 +1,22 @@
 from setuptools import setup, find_packages
+from setuptools.command.install import install
+
+class InstallNLTKDependencies(install):
+    """
+    Install any dependencies needed by
+    the library from the NLTK installer
+    for example corpora. 
+    """
+
+    def run(self):
+        """
+        Add NLTK installation commands
+        here
+        """
+        from nltk import wordnet
+        print "Hello"
+        install.run(self)  
+    
 
 
 setup(
@@ -18,9 +36,6 @@ setup(
         'pata_password_cracker.plugins': [
              'core_bio = pata_password_cracker.generators.core_bio:CoreBioGenerator',
              'family = pata_password_cracker.generators.family:FamilyGenerator',
-             'fans = pata_password_cracker.generators.fans:FansGenerator',
-             'fantasists = pata_password_cracker.generators.fantasists:FantasistsGenerator',
-             'cryptic = pata_password_cracker.generators.cryptic:CrypticGenerator',
              'free_data = pata_password_cracker.generators.free_data:FreeDataGenerator'
         ],
         'pata_password_cracker.encryption': [
@@ -34,11 +49,15 @@ setup(
         ],
         'pata_password_cracker.substitutors': [
              'simple = pata_password_cracker.substitutors.simple:MungSubstitutor', 
-             'simplerandom = pata_password_cracker.substitutors.simplerandom:MungSubstitutorRandom' 
+             'simplerandom = pata_password_cracker.substitutors.simplerandom:MungSubstitutorRandom',
+             'common = pata_password_cracker.substitutors.common:MungSubstitutorCommon'
         ]
     }, 
     install_requires = [
         'patalib==0.0.2',
         'bcrypt'
-    ]
+    ],
+    cmdclass={
+        'install': InstallNLTKDependencies
+    }
 )
