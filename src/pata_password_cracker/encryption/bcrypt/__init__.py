@@ -1,5 +1,6 @@
 import bcrypt
 
+
 class BcryptEncryption():
 
     def hash(self, pwd):

@@ -40,14 +40,35 @@ based results.
 
 ## Command line 
 
-The tool can be run as follows:
-
+You can install the pata password cracking tool via pip:
 
 ```
-python -m pata_password_cracker test_data.yaml
+pip install pata-password-cracker
 ```
+
+After installation please download wordnet from
+the NLTK downloader:
+ 
+```
+python -m nltk.downloader wordnet
+```
+
+The tool can then be run as follows:
+
+```
+python -m pata_password_cracker test_data.yaml words.txt
+```
+
+You should replace test_data.yaml with your input file containing
+the data you wish to process.
+
+words.txt should be replaced with a file/path containing a list of 
+words, one per line.
+
 
 ## YAML format
+
+The input YAMl file should use the following format:
 
 ```
 individuals:
@@ -80,6 +101,27 @@ individuals:
         lodge: Hermes
 ```
 
+## Words format
+
+This is just a doc with a list 
+of words.
+
+For example:
+
+```
+Apple
+Egg
+Cabbage
+Happy
+Tree
+Sun
+Run
+```
+
+## Output
+
+Currently all output is saved to a file called passwords.yaml.
+
 
 ## Encryption
 
@@ -92,7 +134,11 @@ New encryption plguins can be added as needed.
 This is where the magic happens. Using pataphysical algorithms we can generate
 all sorts of interesting password combinations based upon key value pairs.
 
+You can read more about these at:
 
-This is still in early stages of development......
- 
+https://andydennis.github.io/patalib/
+
+
+
+
 

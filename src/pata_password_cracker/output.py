@@ -1,8 +1,7 @@
-import yaml 
+import yaml
 
 
 class ProcessOutputYaml():
-
 
     def output_processor(self, ind_dict):
 

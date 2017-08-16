@@ -1,5 +1,6 @@
 import hashlib
 
+
 class SHA1Encryption():
 
     def hash(self, pwd):
@@ -8,4 +9,4 @@ class SHA1Encryption():
         """
         hash_val = hashlib.sha1()
         hash_val.update(pwd.encode('utf-8'))
-        return hash_val.hexdigest() 
+        return hash_val.hexdigest()
