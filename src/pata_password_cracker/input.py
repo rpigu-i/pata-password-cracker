@@ -13,7 +13,6 @@ class ProcessInputYaml():
         Open the YAML doc and return to
         caller
         """
-
         socialdata = {}
         opendoc = open(yamldoc, "r")
         socialdata = yaml.safe_load_all(opendoc)
@@ -30,7 +29,6 @@ class ProcessInputWords():
         """
         Process input word list
         """
-
         worddata = []
         with open(worddoc) as file:
             for line in file:

@@ -10,7 +10,6 @@ def main():
     Function to kick off the show.
     Accepts a YAML file as input
     """
-
     logo = Logo()
     logo.generate_logo()
     parser = argparse.ArgumentParser()
@@ -29,7 +28,6 @@ def process_input(yaml_file, words_file):
     Create a new YAML parsing object
     and dump the content out as a dict
     """
-
     print "Processing input YAML"
     yaml_to_dict = ProcessInputYaml()
     yaml_to_dict = yaml_to_dict.yaml_processor(yaml_file)
