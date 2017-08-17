@@ -21,8 +21,8 @@ class InstallNLTKDependencies(install):
 
 setup(
     name='pata-password-cracker',
-    version='1.0.0',
-    description='Intelligence passwork cracker using personal data',
+    version='1.0.1',
+    description='Pataphysical passwork cracker using personal data',
     maintainer='Andy Dennis',
     license='MIT',
     url='https://github.com/andydennis/pata-password-cracker',
