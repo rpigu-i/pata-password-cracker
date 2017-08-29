@@ -30,7 +30,7 @@ class Logo():
         print " latter extends beyond physics                                "
         print " - A. Jarry                                                   "
         print "                                                              "
-        print " Brought to you by rpiguy......                               "
+        print " Brought to you by patamechanix......                         "
         print "                                                              "
         print "                                                              "
         print "                                                              "

@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 from setuptools.command.install import install
-
+import io
 
 class InstallNLTKDependencies(install):
     """
@@ -19,13 +19,26 @@ class InstallNLTKDependencies(install):
         install.run(self)
 
 
+def read(*filenames, **kwargs):
+    encoding = kwargs.get('encoding', 'utf-8')
+    sep = kwargs.get('sep', '\n')
+    buf = []
+    for filename in filenames:
+        with io.open(filename, encoding=encoding) as f:
+            buf.append(f.read())
+    return sep.join(buf)
+
+
+long_description = read('README.md')
+
 setup(
     name='pata-password-cracker',
-    version='1.0.1',
+    version='1.1.0',
     description='Pataphysical passwork cracker using personal data',
-    maintainer='Andy Dennis',
+    long_description=long_description,
+    maintainer='patamechanix',
     license='MIT',
-    url='https://github.com/andydennis/pata-password-cracker',
+    url='https://github.com/patamechanix/pata-password-cracker',
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),

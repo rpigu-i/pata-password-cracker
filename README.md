@@ -159,11 +159,15 @@ This is just a doc with a list
 of words. Linux and Unix-like operating systems often
 include a words file. This can usually be found under:
 
+```
 /usr/share/dict/words
+```
 
 or
 
+```
 /usr/dict/words
+```
 
 If you wish to construct your own it should be a newline delimeted list.
 
@@ -239,7 +243,7 @@ all sorts of interesting password combinations based upon key value pairs.
 
 You can read more about these at:
 
-https://andydennis.github.io/patalib/
+https://patamechanix.github.io/patalib/
 
 This application uses version 1 of the packages and includes the following classes:
 
