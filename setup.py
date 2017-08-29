@@ -15,7 +15,7 @@ class InstallNLTKDependencies(install):
         here
         """
         from nltk import wordnet
-        print "Installing WordNet""
+        print "Installing WordNet"
         install.run(self)
 
 
