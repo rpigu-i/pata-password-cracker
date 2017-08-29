@@ -15,7 +15,7 @@ class InstallNLTKDependencies(install):
         here
         """
         from nltk import wordnet
-        print "Hello"
+        print "Installing WordNet""
         install.run(self)
 
 
@@ -67,7 +67,7 @@ setup(
         ]
     },
     install_requires=[
-        'patalib==1.0.0',
+        'patalib==1.0.1',
         'bcrypt'
     ],
     cmdclass={
