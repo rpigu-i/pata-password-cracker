@@ -19,11 +19,26 @@ def main():
     parser.add_argument(
         "words",
         help="an input text document containing a word list e.g. Linux/Unix words ")
+    parser.add_argument(
+        "encryption",
+        help="list of encryption to be used in output ")
+
     args = parser.parse_args()
-    process_input(args.yaml, args.words)
+    plugins = plugin_processor('pata_password_cracker.encryption', args.encryption)
+    process_input(args.yaml, args.words, plugins)
 
 
-def process_input(yaml_file, words_file):
+def plugin_processor(cat, plugins):
+    """
+    Return a list of plugins
+    to use
+    """
+    plugins_to_use = {}
+    plugins_to_use[cat] = plugins.split(',')
+    return plugins_to_use
+
+
+def process_input(yaml_file, words_file, plugins):
     """
     Create a new YAML parsing object
     and dump the content out as a dict
@@ -36,15 +51,15 @@ def process_input(yaml_file, words_file):
 
     for i in yaml_to_dict:
         for x in i['individuals']:
-            generate_password_list(x, words_to_list)
+            generate_password_list(x, words_to_list, plugins)
 
 
-def generate_password_list(individual, words_to_list):
+def generate_password_list(individual, words_to_list, plugins):
     """
     Kick off the password list generation
     """
     individuals_passwords = Categories(
-        individual, words_to_list).process_categories()
+        individual, words_to_list, plugins).process_categories()
     dict_to_yaml = ProcessOutputYaml()
     dict_to_yaml.output_processor(individuals_passwords)
 
