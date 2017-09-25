@@ -56,7 +56,7 @@ python -m nltk.downloader wordnet
 The tool can then be run as follows:
 
 ```
-python -m pata_password_cracker test_data.yaml words.txt
+python -m pata_password_cracker test_data.yaml words.txt md5,sha1
 ```
 
 You should replace test_data.yaml with your input file containing
@@ -64,6 +64,9 @@ the data you wish to process.
 
 words.txt should be replaced with a file/path containing a list of 
 words, one per line.
+
+Finally a list of types of encryption you want to output can be included.
+Currently supported are: md5,sha1,sha256,sha384,sha512,bcrypt
 
 
 ## YAML format
