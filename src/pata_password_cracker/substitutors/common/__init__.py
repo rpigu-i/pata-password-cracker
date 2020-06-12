@@ -25,4 +25,4 @@ class MungSubstitutorCommon(MungSubstitutor):
     }
 
     def substitute(self, pwd):
-        return self.munger(pwd, self.substitution_table_common.iteritems())
+        return self.munger(pwd, self.substitution_table_common.items())

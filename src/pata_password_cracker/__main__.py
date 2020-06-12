@@ -1,8 +1,8 @@
 import argparse
-from input import ProcessInputYaml, ProcessInputWords
-from gen_logo import Logo
-from categories import Categories
-from output import ProcessOutputYaml
+from .input import ProcessInputYaml, ProcessInputWords
+from .gen_logo import Logo
+from .categories import Categories
+from .output import ProcessOutputYaml
 
 
 def main():

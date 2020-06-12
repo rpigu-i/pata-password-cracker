@@ -37,7 +37,7 @@ class MungSubstitutor():
     }
 
     def substitute(self, pwd):
-        return self.munger(pwd, self.substitution_table_simple.iteritems())
+        return self.munger(pwd, self.substitution_table_simple.items())
 
     def munger(self, pwd, table):
         """

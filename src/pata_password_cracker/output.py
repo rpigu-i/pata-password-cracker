@@ -8,5 +8,5 @@ class ProcessOutputYaml():
         Output the processed results
         to a YAMl file
         """ 
-        output_doc = file('passwords.yaml', 'w')
+        output_doc = open('passwords.yaml', 'w')
         yaml.dump(ind_dict, output_doc, default_flow_style=False)

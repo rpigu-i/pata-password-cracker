@@ -41,7 +41,7 @@ class FamilyGenerator(DateNameMixin):
         pata_passwords = []
 
         for ind in self.family_data:
-            for bio, values in ind.iteritems():
+            for bio, values in ind.items():
                 pata_passwords.append(self.name_dob(values))
                 pata_passwords.append(
                     PasswordGenerator(
