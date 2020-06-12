@@ -2,6 +2,8 @@
 Password cracker that implements patadata toolkit and other
 metaphysical and psychological techniques.
 
+Version 2.x uses Python 3.x. For Python 2.x (deprecated) please 
+refer to the v1 branch. 
 
 ## Introduction
 
@@ -235,8 +237,14 @@ will then be enumerated.
 Currently md5, SHA1, SHA224, SHA256, SHA384, and SHA512 are supported.
 New encryption plugins can be added as needed.
 
-In version 1 of the application all encryption formats are used.
-Future versions of the software will allow filtering of this list.
+Add the encryption format you would like to the end of the command e.g.
+
+```
+python -m pata_password_cracker test_data.yaml words.txt sha1
+```
+
+Here SHA1 hashes will be included. Multiple formats can be added via comma
+separation e.g. md5,sha1 etc. 
 
 
 ## PataData
@@ -246,9 +254,9 @@ all sorts of interesting password combinations based upon key value pairs.
 
 You can read more about these at:
 
-https://patamechanix.github.io/patalib/
+https://github.com/LesPatamechanix/patalib
 
-This application uses version 1 of the packages and includes the following classes:
+This application uses version 2 (Python 3 support) of the package and includes the following classes:
 
 * Antonym
 * Synonym

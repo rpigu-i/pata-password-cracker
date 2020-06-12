@@ -15,7 +15,7 @@ class InstallNLTKDependencies(install):
         here
         """
         from nltk import wordnet
-        print "Installing WordNet"
+        print ("Installing WordNet")
         install.run(self)
 
 
@@ -33,7 +33,7 @@ long_description = read('README.md')
 
 setup(
     name='pata-password-cracker',
-    version='1.1.0',
+    version='2.0.0',
     description='Pataphysical passwork cracker using personal data',
     long_description=long_description,
     maintainer='patamechanix',
@@ -67,7 +67,7 @@ setup(
         ]
     },
     install_requires=[
-        'patalib==1.0.1',
+        'patalib==2.0.0',
         'bcrypt'
     ],
     cmdclass={

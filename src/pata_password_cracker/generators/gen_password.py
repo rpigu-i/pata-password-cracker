@@ -34,7 +34,7 @@ class PasswordGenerator:
         """
         individual = {}
         count = 0
-        for k, v in self.bio_data.iteritems():
+        for k, v in self.bio_data.items():
             individual[self.key] = k
             if not isinstance(v, list):
                 individual[k] = self.gen_pata_data(str(v))

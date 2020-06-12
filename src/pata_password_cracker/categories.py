@@ -74,7 +74,7 @@ class Categories:
             count = count + 1
 
             for category in self.bio_data[target]:
-                for k, v in category.iteritems():
+                for k, v in category.items():
                     for p in self.loaded_cat_plugin_dict:
                         if k == p:
                             target_vals.append(

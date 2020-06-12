@@ -1,4 +1,4 @@
-from gen_password import PasswordGenerator
+from .gen_password import PasswordGenerator
 
 class DateNameMixin(object):
     """
