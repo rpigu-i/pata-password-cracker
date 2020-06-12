@@ -43,7 +43,7 @@ def process_input(yaml_file, words_file, plugins):
     Create a new YAML parsing object
     and dump the content out as a dict
     """
-    print "Processing input YAML"
+    print ("Processing input YAML")
     yaml_to_dict = ProcessInputYaml()
     yaml_to_dict = yaml_to_dict.yaml_processor(yaml_file)
     words_to_list = ProcessInputWords()
