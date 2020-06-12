@@ -2,6 +2,8 @@
 Password cracker that implements patadata toolkit and other
 metaphysical and psychological techniques.
 
+Version 2.x uses Python 3.x. For Python 2.x (deprecated) please 
+refer to the v1 branch. 
 
 ## Introduction
 
@@ -246,7 +248,7 @@ all sorts of interesting password combinations based upon key value pairs.
 
 You can read more about these at:
 
-https://patamechanix.github.io/patalib/
+https://github.com/LesPatamechanix/patalib
 
 This application uses version 1 of the packages and includes the following classes:
 
