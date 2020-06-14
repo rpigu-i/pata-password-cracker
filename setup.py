@@ -29,16 +29,14 @@ def read(*filenames, **kwargs):
     return sep.join(buf)
 
 
-long_description = read('README.md')
-
 setup(
     name='pata-password-cracker',
     version='2.0.0',
     description='Pataphysical passwork cracker using personal data',
-    long_description=long_description,
-    maintainer='patamechanix',
+    long_description='Pataphysical passwork cracker using personal data',
+    maintainer='rpigu-i',
     license='MIT',
-    url='https://github.com/patamechanix/pata-password-cracker',
+    url='https://github.com/LesPatamechanix/pata-password-cracker',
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),
