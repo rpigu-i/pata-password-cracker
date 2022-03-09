@@ -36,7 +36,7 @@ setup(
     long_description='Pataphysical passwork cracker using personal data',
     maintainer='rpigu-i',
     license='MIT',
-    url='https://github.com/LesPatamechanix/pata-password-cracker',
+    url='https://github.com/rpigu-i/pata-password-cracker',
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),
