@@ -1,4 +1,4 @@
-# pata-password-cracker
+# Pata Password Cracker 2.0
 Password cracker that implements patadata toolkit and other
 metaphysical and psychological techniques.
 
@@ -25,7 +25,7 @@ The tool is agnostic so any key value pair you consider
 worthy of attempting is valid. This is defined under the 
 free data category.
 
-Two fixed categories exist these being the core_data and family data. 
+Two fixed categories exist these being the `core_data` and family data. 
 This is where a user core biographic data is stored, for example name, age, 
 gender and so on. The family section contains family relationship data.
 Specific processing is applied to this based upon known password
@@ -36,7 +36,7 @@ her work back in the early naughties.
 
 Originally the plan was to use the four catgeories she defined as distinct 
 subsections in the input YAML doc. However it was quickly discovered that
-using the free_data category was just as effective for fans and fantasist 
+using the `free_data` category was just as effective for fans and fantasist 
 based results. 
 
 
@@ -61,7 +61,7 @@ The tool can then be run as follows:
 python -m pata_password_cracker test_data.yaml words.txt md5,sha1
 ```
 
-You should replace test_data.yaml with your input file containing
+You should replace `test_data.yaml` with your input file containing
 the data you wish to process.
 
 words.txt should be replaced with a file/path containing a list of 
@@ -107,7 +107,7 @@ individuals:
 ```
 
 The first section that takes advanced processing is the
-core_bio data.
+`core_bio` data.
 
 ```
 - core_bio:
@@ -120,7 +120,7 @@ core_bio data.
     dob: 1982-05-06
 ```
 
-In the case of core_bio and famly data there are three specific reserved
+In the case of `core_bio` and famly data there are three specific reserved
 fields, which are used for advanced processing. These are:
 
 ```
@@ -129,15 +129,15 @@ last_name
 dob      
 ```
 
-The dob should use a YYYY-MM-DD format.
+The dob should use a `YYYY-MM-DD` format.
 
 In future versions, the list of reserved fields will
 expand. 
 
 The second section with advanced processing is the family section.
-A family section is amde up of a lsit of individuals.
+A family section is made up of a list of individuals.
 
-Each individual in the family section should therefore be included
+Each individual in the `family` section should therefore be included
 using the following format:
 
 ```
@@ -154,7 +154,7 @@ using the following format:
       dob: 1944-03-03
 ```
 
-As with the core_bio the three fields (dob, first_name and last_name) will
+As with the `core_bio` the three fields (dob, first_name and last_name) will
 experience some advanced processing. Therefore each key/value should 
 only be included once per individual.
 
@@ -190,7 +190,7 @@ Run
 
 ## Output
 
-Currently all output is saved to a file called passwords.yaml.
+Currently all output is saved to a file called `passwords.yaml`.
 Future versions of the software will allow the option to chose
 the output file, and also output format.
 For example XML or JSON.
@@ -222,7 +222,7 @@ The output is in the following example format:
 ```
 
 The output starts with a unqiue id for the target individual(s).
-Following this each category included e.g. core_bio, family, free_data
+Following this each category included e.g. `core_bio`, `family`, `free_data`
 is listed.  
 Under each category the key/value pairs and any advanced processing
 that generates key/values in the fly is displayed. 
@@ -254,7 +254,7 @@ all sorts of interesting password combinations based upon key value pairs.
 
 You can read more about these at:
 
-https://github.com/LesPatamechanix/patalib
+https://github.com/rpigu-i/patalib
 
 This application uses version 2 (Python 3 support) of the package and includes the following classes:
 
