@@ -71,6 +71,67 @@ Finally a list of types of encryption you want to output can be included.
 Currently supported are: md5,sha1,sha256,sha384,sha512,bcrypt
 
 
+## TOML and Poetry Support
+
+This project now supports modern Python packaging with TOML configuration and Poetry dependency management.
+
+### Using TOML Configuration
+
+The project includes a `pyproject.toml` file that follows PEP 621 standards for project metadata. You can build the package using modern Python build tools:
+
+```bash
+# Install build tools
+pip install build
+
+# Build the package
+python -m build
+```
+
+### Using Poetry
+
+To use Poetry for dependency management and development:
+
+```bash
+# Install Poetry (if not already installed)
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies
+poetry install
+
+# Install with development dependencies
+poetry install --with dev
+
+# Run the tool
+poetry run python -m pata_password_cracker test_data.yaml words.txt md5,sha1
+
+# Build the package
+poetry build
+```
+
+### NLTK Dependencies
+
+After installation, you need to install NLTK data. You can either:
+
+1. Use the provided script:
+```bash
+python install_nltk_deps.py
+```
+
+2. Or install manually:
+```bash
+python -m nltk.downloader wordnet
+```
+
+### Development Dependencies
+
+When using Poetry, the following development tools are included:
+- pytest (testing)
+- pytest-cov (coverage)
+- black (code formatting)
+- flake8 (linting)
+- mypy (type checking)
+
+
 ## YAML format
 
 The input YAML file should use the following format:
