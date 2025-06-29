@@ -1,0 +1,144 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pata-password-cracker"
+version = "2.0.0"
+description = "Pataphysical password cracker using personal data"
+authors = [{name = "rpigu-i"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "patalib==2.0.0",
+    "bcrypt",
+    "nltk",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/rpigu-i/pata-password-cracker"
+Repository = "https://github.com/rpigu-i/pata-password-cracker"
+
+[project.scripts]
+pata_password_cracker = "pata_password_cracker.__main__:main"
+
+[project.entry-points."pata_password_cracker.plugins"]
+core_bio = "pata_password_cracker.generators.core_bio:CoreBioGenerator"
+family = "pata_password_cracker.generators.family:FamilyGenerator"
+free_data = "pata_password_cracker.generators.free_data:FreeDataGenerator"
+
+[project.entry-points."pata_password_cracker.encryption"]
+md5 = "pata_password_cracker.encryption.md5:MD5Encryption"
+sha1 = "pata_password_cracker.encryption.sha1:SHA1Encryption"
+sha224 = "pata_password_cracker.encryption.sha224:SHA224Encryption"
+sha256 = "pata_password_cracker.encryption.sha256:SHA256Encryption"
+sha384 = "pata_password_cracker.encryption.sha384:SHA384Encryption"
+sha512 = "pata_password_cracker.encryption.sha512:SHA512Encryption"
+bcrypt = "pata_password_cracker.encryption.bcrypt:BcryptEncryption"
+
+[project.entry-points."pata_password_cracker.substitutors"]
+simple = "pata_password_cracker.substitutors.simple:MungSubstitutor"
+simplerandom = "pata_password_cracker.substitutors.simplerandom:MungSubstitutorRandom"
+common = "pata_password_cracker.substitutors.common:MungSubstitutorCommon"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Poetry Configuration (alternative build system)
+# To use Poetry, replace the [build-system] section above with:
+# [build-system]
+# requires = ["poetry-core"]  
+# build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "pata-password-cracker"
+version = "2.0.0"
+description = "Pataphysical password cracker using personal data"
+authors = ["rpigu-i"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/rpigu-i/pata-password-cracker"
+repository = "https://github.com/rpigu-i/pata-password-cracker"
+packages = [{include = "pata_password_cracker", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+patalib = "2.0.0"
+bcrypt = "*"
+nltk = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+pytest-cov = "^4.0"
+black = "^23.0" 
+flake8 = "^6.0"
+mypy = "^1.0"
+
+[tool.poetry.scripts]
+pata_password_cracker = "pata_password_cracker.__main__:main"
+
+[tool.poetry.plugins."pata_password_cracker.plugins"]
+core_bio = "pata_password_cracker.generators.core_bio:CoreBioGenerator"
+family = "pata_password_cracker.generators.family:FamilyGenerator"
+free_data = "pata_password_cracker.generators.free_data:FreeDataGenerator"
+
+[tool.poetry.plugins."pata_password_cracker.encryption"]
+md5 = "pata_password_cracker.encryption.md5:MD5Encryption"
+sha1 = "pata_password_cracker.encryption.sha1:SHA1Encryption"
+sha224 = "pata_password_cracker.encryption.sha224:SHA224Encryption"
+sha256 = "pata_password_cracker.encryption.sha256:SHA256Encryption"
+sha384 = "pata_password_cracker.encryption.sha384:SHA384Encryption"
+sha512 = "pata_password_cracker.encryption.sha512:SHA512Encryption"
+bcrypt = "pata_password_cracker.encryption.bcrypt:BcryptEncryption"
+
+[tool.poetry.plugins."pata_password_cracker.substitutors"]
+simple = "pata_password_cracker.substitutors.simple:MungSubstitutor"
+simplerandom = "pata_password_cracker.substitutors.simplerandom:MungSubstitutorRandom"
+common = "pata_password_cracker.substitutors.common:MungSubstitutorCommon"
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
