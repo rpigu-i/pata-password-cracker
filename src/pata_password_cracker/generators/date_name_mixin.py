@@ -19,11 +19,11 @@ class DateNameMixin(object):
         """
         name_dob_combo = {}
 
-        if values['first_name'] and values['dob']:
+        if values.get('first_name') and values.get('dob'):
             name_dob_combo['first_name_dob'] = self.date_and_name_processor(
                 values['first_name'], values['dob'])
 
-        if values['last_name'] and values['dob']:
+        if values.get('last_name') and values.get('dob'):
             name_dob_combo['last_name_dob'] = self.date_and_name_processor(
                 values['last_name'], values['dob'])
 

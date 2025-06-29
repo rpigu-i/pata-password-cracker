@@ -222,3 +222,21 @@ class TestMainFunction:
             'words.txt', 
             {'pata_password_cracker.encryption': ['md5', 'sha1']}
         )
+    
+    def test_main_as_script(self):
+        """Test the if __name__ == '__main__' block."""
+        # This test covers the missing line in __main__.py
+        import subprocess
+        import sys
+        
+        # Test that the script can be run (but will exit due to missing args)
+        result = subprocess.run(
+            [sys.executable, '-m', 'pata_password_cracker.__main__'],
+            capture_output=True,
+            text=True
+        )
+        
+        # Should exit with error code due to missing arguments, but that's expected
+        # The important part is that the __main__ block is executed
+        assert result.returncode != 0  # argparse will exit with error
+        assert 'usage:' in result.stderr or 'error:' in result.stderr

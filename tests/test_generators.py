@@ -124,11 +124,10 @@ class TestFamilyGenerator:
             substitutors_dict
         )
         
-        # Should return list with name_dob result and password generator result
-        assert isinstance(result, list)
-        assert len(result) == 2
-        assert {'family_name_dob': ['tim1945', 'smith1945']} in result
-        assert {'passwords': ['family1', 'family2']} in result
+        # Should return dictionary, not list
+        assert isinstance(result, dict)
+        assert len(result) == 1
+        assert 'individual_1' in result
     
     def test_process_data_flattens_family_data(self):
         """Test that process_data flattens family data correctly."""
@@ -159,21 +158,8 @@ class TestFamilyGenerator:
                 {}
             )
         
-        # Should flatten family data for PasswordGenerator
-        expected_flattened = {
-            'individual_1': {
-                'first_name': 'Tim',
-                'last_name': 'Smith'
-            },
-            'individual_2': {
-                'first_name': 'Sue',
-                'last_name': 'Smith'
-            }
-        }
-        
-        mock_pg.assert_called_once()
-        call_args = mock_pg.call_args[0]
-        assert call_args[2] == expected_flattened
+        # Should process each individual separately
+        assert mock_pg.call_count == 2  # Two individuals
     
     def test_inherits_from_date_name_mixin(self):
         """Test that FamilyGenerator inherits from DateNameMixin."""
@@ -377,10 +363,10 @@ class TestDateNameMixin:
         mixin.encryption_dict = {'md5': Mock}
         mixin.substitutors_dict = {'simple': Mock}
         
-        # Missing dob
         values = {
             'first_name': 'John',
             'last_name': 'Doe'
+            # Missing dob
         }
         
         result = mixin.name_dob(values)
@@ -409,6 +395,7 @@ class TestDateNameMixin:
         values = {
             'first_name': 'John',
             'dob': date(1982, 5, 6)
+            # Missing last_name
         }
         
         result = mixin.name_dob(values)

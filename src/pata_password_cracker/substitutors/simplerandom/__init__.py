@@ -17,5 +17,5 @@ class MungSubstitutorRandom(MungSubstitutor):
         """
 
         random_simple_table = random.sample(
-            self.substitution_table_simple.items(), 3)
+            list(self.substitution_table_simple.items()), 3)
         return self.munger(pwd, random_simple_table)
