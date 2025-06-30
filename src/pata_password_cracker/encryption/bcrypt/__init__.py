@@ -7,5 +7,5 @@ class BcryptEncryption():
         """
         Return a bcrypt hash value
         """
-        hash_val = bcrypt.hashpw(pwd, bcrypt.gensalt())
+        hash_val = bcrypt.hashpw(pwd.encode('utf-8'), bcrypt.gensalt())
         return hash_val
